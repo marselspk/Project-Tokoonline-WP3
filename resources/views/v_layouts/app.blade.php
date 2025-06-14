@@ -32,9 +32,9 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 
 </head>
 
@@ -80,8 +80,8 @@
                         </li>
                         <!-- /Cart -->
 
-                        <!-- Account -->
                         @if (Auth::check())
+                        <!-- Account -->
                         <li class="header-account dropdown default-dropdown">
                             <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
                                 <div class="header-btns-icon">
@@ -98,7 +98,7 @@
                                         onclick="event.preventDefault(); document.getElementById('keluar-app').submit();"><i class="fa fa-power-off"></i> Keluar
                                     </a>
                                     <!-- form keluar app -->
-                                    <form id="keluar-app" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="keluar-app" action="{{ route('customer.logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                     <!-- form keluar app end -->
@@ -115,8 +115,8 @@
                             </div>
                             <a href="{{ route('auth.redirect') }}" class="text-uppercase">Login</a>
                         </li>
-                        @endif
                         <!-- /Account -->
+                        @endif
 
                         <!-- Mobile nav toggle-->
                         <li class="nav-toggle">
@@ -137,7 +137,6 @@
         <!-- container -->
         <div class="container">
             <div id="responsive-nav">
-                <!-- category nav -->
                 @php
                 $kategori = DB::table('kategori')->orderBy('nama_kategori', 'asc')->get();
                 @endphp
@@ -147,10 +146,10 @@
                     <span class="category-header">Kategori <i class="fa fa-list"></i></span>
                     <ul class="category-list">
                         @foreach ($kategori as $row)
-                        <li><a href="{{ route('produk.kategori', $row->id) }}">{{ $row->nama_kategori }}</a></li>
+                        <li><a href="{{ route('produk.kategori', $row->id) }}">{{ $row->nama_kategori }}</a>
+                        </li>
                         @endforeach
                     </ul>
-
                     <ul class="category-list">
                 </div>
                 @else
@@ -158,12 +157,14 @@
                     <span class="category-header">Kategori <i class="fa fa-list"></i></span>
                     <ul class="category-list">
                         @foreach ($kategori as $row)
-                        <li><a href="{{ route('produk.kategori', $row->id) }}">{{ $row->nama_kategori }}</a></li>
+                        <li><a href="{{ route('produk.kategori', $row->id) }}">{{ $row->nama_kategori }}</a>
+                        </li>
                         @endforeach
                     </ul>
                 </div>
                 <!-- /category nav -->
                 @endif
+
                 <!-- menu nav -->
                 <div class="menu-nav">
                     <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
@@ -192,10 +193,10 @@
                 <div id="home-slick">
                     <!-- banner -->
                     <div class="banner banner-1">
-                        <img src="{{ asset('frontend/banner/img_slide01.jpg') }}" alt="">
+                        <img src="{{ asset('frontend/banner/banner01.jpg') }}" alt="">
                         <div class="banner-caption text-center">
                             <h1>Jajanan Tradisional</h1>
-                            <h3 class="font-weak" style="color: 30323a;">Khas Makanan Indonesia</h3>
+                            <h3 class="white-color font-weak">Khas Makanan Indonesia</h3>
                             <button class="primary-btn">Pesan Sekarang</button>
                         </div>
                     </div>
@@ -203,9 +204,10 @@
 
                     <!-- banner -->
                     <div class="banner banner-1">
-                        <img src="{{ asset('frontend/banner/img_slide02.jpg') }}" alt="">
+                        <img src="{{ asset('frontend/banner/banner02.jpg') }}" alt="">
                         <div class="banner-caption">
-                            <h1 class="primary-color">Khas Makanan Indonesia<br><span class="white-color font-weak">Jajanan Tradisional</span></h1>
+                            <h1 class="primary-color">Khas Makanan Indonesia<br><span
+                                    class="white-color font-weak">Jajanan Tradisional</span></h1>
                             <button class="primary-btn">Pesan Sekarang</button>
                         </div>
                     </div>
@@ -213,9 +215,9 @@
 
                     <!-- banner -->
                     <div class="banner banner-1">
-                        <img src="{{ asset('frontend/banner/img_slide03.jpg') }}" alt="">
+                        <img src="{{ asset('frontend/banner/banner03.jpg') }}" alt="">
                         <div class="banner-caption">
-                            <h1 style="color: f8694a;">Khas Makanan <span>Indonesia</span></h1>
+                            <h1 class="white-color">Khas Makanan <span>Indonesia</span></h1>
                             <button class="primary-btn">Pesan Sekarang</button>
                         </div>
                     </div>
@@ -285,7 +287,8 @@
                         <h3 class="aside-title">Filter Kategori</h3>
                         <ul class="list-links">
                             @foreach ($kategori as $row)
-                            <li><a href="{{ route('produk.kategori', $row->id) }}">{{ $row->nama_kategori }}</a></li>
+                            <li><a href="{{ route('produk.kategori', $row->id) }}">{{ $row->nama_kategori }}</a>
+                            </li>
                             @endforeach
                         </ul>
                     </div>
@@ -301,7 +304,6 @@
                     <!-- @yieldAwal -->
                     @yield('content')
                     <!-- @yieldAkhir-->
-
 
                     <!-- store bottom filter -->
 
@@ -332,7 +334,8 @@
                         </div>
                         <!-- /footer logo -->
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna</p>
 
                         <!-- footer social -->
                         <ul class="footer-social">
@@ -401,9 +404,12 @@
                     <!-- footer copyright -->
                     <div class="footer-copyright">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>
+                        Copyright &copy;
+                        <script>
                             document.write(new Date().getFullYear());
-                        </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        </script> All rights reserved | This template is made with <i
+                            class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                            target="_blank">Colorlib</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </div>
                     <!-- /footer copyright -->
